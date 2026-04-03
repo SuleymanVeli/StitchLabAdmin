@@ -1,0 +1,63 @@
+/* 1. Reset və Təməl Stillər */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 2. Linklərin Standart Görünüşü */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 3. Düymə (Button) Təməlləri */
+button {
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 4. Cədvəl (Table) Ümumi Stilləri */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* 5. Input və Form Elementləri */
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* 6. Köməkçi Siniflər (Utility Classes) */
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.flex { display: flex; }
+.justify-between { justify-content: space-between; }
+.align-center { align-items: center; }

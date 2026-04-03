@@ -1,0 +1,119 @@
+/* Ana konteyner: Bütün ekranı əhatə edir */
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden; /* Ekranın özünün scroll olmasını bağlayırıq */
+  background-color: #f9fafb;
+}
+
+/* Sidebar: Solda sabit qalır */
+.sidebar {
+  width: 260px;
+  background-color: #111827; /* Tünd rəng professional görünüş üçün */
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0; /* Sidebar-ın sıxılmasının qarşısını alır */
+  transition: all 0.3s ease;
+}
+
+.logoArea {
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid #1f2937;
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #6366f1; /* İndigo rəngi */
+}
+
+/* Naviqasiya Linkləri */
+.nav {
+  flex: 1;
+  padding: 1.5rem 0.75rem;
+  overflow-y: auto; /* Çox link olsa sidebarın özü scroll olsun */
+}
+
+.navUl {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navLi {
+  margin-bottom: 0.5rem;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: #9ca3af;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.navLink:hover {
+  background-color: #1f2937;
+  color: #ffffff;
+}
+
+.activeLink {
+  background-color: #1f2937;
+  color: #ffffff !important;
+  box-shadow: inset 4px 0 0 #6366f1;
+}
+
+/* Sağ tərəf: Header və Məzmun */
+.mainWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Flexbox-da məzmunun daşmaması üçün vacibdir */
+}
+
+.header {
+  height: 64px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 2rem;
+  flex-shrink: 0;
+}
+
+.contentArea {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto; /* Yalnız məzmun olan hissə scroll olur */
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.logoutBtn {
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.logoutBtn:hover {
+  background: #fecaca;
+}

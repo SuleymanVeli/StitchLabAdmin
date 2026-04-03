@@ -1,0 +1,58 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  gap: 8px;
+}
+
+/* Variantlar */
+.primary {
+  background-color: #6366f1;
+  color: white;
+}
+.primary:hover { background-color: #4f46e5; }
+
+.secondary {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+.secondary:hover { background-color: #e2e8f0; }
+
+.danger {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+.danger:hover { background-color: #fecaca; }
+
+.outline {
+  background-color: transparent;
+  border: 2px dashed #cbd5e1;
+  color: #64748b;
+}
+.outline:hover { border-color: #94a3b8; color: #1e293b; }
+
+/* Ölçülər */
+.sm { padding: 4px 10px; font-size: 12px; }
+.md { padding: 10px 20px; font-size: 14px; }
+.lg { padding: 14px 28px; font-size: 16px; }
+
+/* Yükləmə animasiyası (Spinner) */
+.loader {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

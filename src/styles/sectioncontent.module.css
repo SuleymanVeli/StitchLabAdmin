@@ -1,0 +1,78 @@
+.contentRow {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.typeSelector {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 5px;
+}
+
+.typeSelector select {
+  border: none;
+  background: #f1f5f9;
+  font-size: 12px;
+  font-weight: bold;
+  color: #6366f1;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.stepInput {
+  width: 60px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 5px;
+  text-align: center;
+}
+
+.addContentBtn {
+  background: #e0e7ff;
+  color: #4338ca;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.deleteSmall {
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.imageFieldsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.addMoreBtn {
+  background: none;
+  border: 1px dashed #a88e7a;
+  color: #a88e7a;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}

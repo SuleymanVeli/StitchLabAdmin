@@ -1,0 +1,105 @@
+/* Ana konteyner */
+.pageWrapper {
+  padding: 2rem;
+  background-color: #f8f9fa; /* Çox açıq boz fon */
+  min-height: 100vh;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.pageTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3436;
+  margin: 0;
+}
+
+/* Kart stili */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden; /* Cədvəlin künclərini qorumaq üçün */
+}
+
+/* Cədvəl stili */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th {
+  background-color: #fcfcfc;
+  padding: 12px 20px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #636e72;
+  border-bottom: 1px solid #f1f2f6;
+}
+
+.table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f1f2f6;
+  vertical-align: middle;
+  color: #2d3436;
+}
+
+.table tr:hover {
+  background-color: #fbfbfb; /* Sətir üzərinə gələndə rəng dəyişimi */
+}
+
+/* Şəkil (Thumbnail) */
+.thumbnailWrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fdfdfd;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Kateqoriya Tag-ları */
+.tagGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.categoryTag {
+  background-color: #e3f2fd; /* Açıq mavi */
+  color: #1976d2;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Əməliyyat düymələri qrupu */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Kiçik bir "Empty State" stili */
+.emptyState {
+  text-align: center;
+  padding: 40px;
+  color: #b2bec3;
+  font-style: italic;
+}
