@@ -23,6 +23,10 @@ const schema = z.object({
     title: z.string().min(3, "Ad çox qısadır"),
     description: z.string().min(10, "Açıqlama çox qısadır minimum 10 simvol olmalıdır"),
     categories: z.array(z.string()).min(1, "Ən azı bir kateqoriya seçin"),
+
+    difficulty: z.enum(['easy', 'medium', 'hard']),
+    isPro: z.boolean().default(false),
+
     images: z.object({
         large: z.string(),
         thumbnail: z.string(),
@@ -74,6 +78,8 @@ export default function ProductForm() {
     const { register, control, handleSubmit, reset, formState: { errors, isSubmitting }, getValues, setValue } = useForm({
         resolver: zodResolver(schema),
         defaultValues: {
+            difficulty: 'easy',
+            isPro: false,
             sections: [{ name: '', sectionImage: '', content: [{ step: 1, text: '', type: 'text' }] }]
         }
     });
@@ -155,6 +161,32 @@ export default function ProductForm() {
                     />
 
                     <div className={styles.flexRow}>
+                        {/* Çətinlik dərəcəsi */}
+                        <div className={styles.formGroup}>
+                            <label>Çətinlik Səviyyəsi</label>
+                            <select {...register("difficulty")} className={styles.selectInput}>
+                                <option value="easy">Asan</option>
+                                <option value="medium">Orta</option>
+                                <option value="hard">Çətin</option>
+                            </select>
+                            {errors.difficulty && <p className={styles.error}>{errors.difficulty.message}</p>}
+                        </div>
+
+                        {/* Pro Statusu (Checkbox) */}
+                        <div className={styles.formGroup} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '25px' }}>
+                            <input
+                                type="checkbox"
+                                id="isPro"
+                                {...register("isPro")}
+                                style={{ width: '20px', height: '20px' }}
+                            />
+                            <label htmlFor="isPro" style={{ marginBottom: 0, cursor: 'pointer' }}>
+                                🌟 Bu bir <strong>PRO</strong> əl işidir
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className={styles.flexRow}>
                         <MultiSelect
                             label="Kateqoriyalar"
                             name="categories"
@@ -190,7 +222,7 @@ export default function ProductForm() {
                             error={errors.preparation?.main?.hook?.message as string}
                         />
 
-                        
+
                     </div>
 
                     <MultiSelect
@@ -243,8 +275,7 @@ export default function ProductForm() {
                                 error={errors.sections?.[sIndex]?.sectionImage?.message as string}
                             />
 
-                            {/* Addımlar (Steps) - Sadəlik üçün burada statik 1 addımdan başlayırıq, 
-                  amma ehtiyac olsa bura da FieldArray əlavə etmək olar */}
+                   
                             <SectionContent
                                 sIndex={sIndex}
                                 control={control}

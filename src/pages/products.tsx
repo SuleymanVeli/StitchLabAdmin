@@ -37,6 +37,19 @@ export default function ProductsPage() {
 
   if (loading) return <div className={styles.card}>Yüklənir...</div>;
 
+  const getDifficulty = (difficulty: string) => {
+    switch (difficulty) {
+      case 'easy':
+        return 'Asan';
+      case 'medium':
+        return 'Orta';
+      case 'hard':
+        return 'Çətin';
+      default:
+        return difficulty;
+    }
+  };
+
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.pageHeader}>
@@ -68,9 +81,25 @@ export default function ProductsPage() {
                       className={styles.thumbnailImage}
                     />
                   </div>
-                </td>
+                </td>                
+                {/* Cədvəlin daxilində Title-ın yanına əlavə etmək olar */}
                 <td>
-                  <div style={{ fontWeight: 600 }}>{product.title}</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontWeight: 600 }}>{product.title}</span>
+                    {product.isPro && (
+                      <span style={{ 
+                        backgroundColor: '#fff3cd', 
+                        color: '#856404', 
+                        fontSize: '10px', 
+                        padding: '2px 6px', 
+                        borderRadius: '4px',
+                        border: '1px solid #ffeeba'
+                      }}>
+                        PRO
+                      </span>
+                    )}
+                  </div>
+                  <div style={{ fontSize: '11px', color: '#888' }}>Səviyyə: {getDifficulty(product.difficulty)}</div>
                 </td>
                 <td>
                   <div className={styles.tagGroup}>

@@ -4,7 +4,15 @@ const ProductSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   categories: [{ type: String }],
-  
+  difficulty: { 
+    type: String, 
+    enum: ['Asan', 'Orta', 'Çətin'], 
+    default: 'Asan' 
+  },
+  isPro: { 
+    type: Boolean, 
+    default: false 
+  },  
   // Şəkillər: həm böyük (hero), həm də kiçik (thumbnail) formatda
   images: {
     large: { type: String, required: true }, // Main high-res image
