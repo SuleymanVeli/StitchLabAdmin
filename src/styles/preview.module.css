@@ -1,0 +1,171 @@
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.phoneContainer {
+  width: 375px; /* Standart iPhone eni */
+  height: 80vh;
+  background: white;
+  border-radius: 40px;
+  border: 8px solid #333;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.phoneHeader {
+  height: 40px;
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+
+.notch {
+  width: 150px;
+  height: 25px;
+  background: #333;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.heroImage {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 0 0 20px 20px;
+}
+
+.body {
+  padding: 20px;
+}
+
+.title { font-size: 22px; color: #555; margin-bottom: 8px; }
+.description { font-size: 14px; color: #777; line-height: 1.4; }
+
+.card {
+  background: #fff;
+  border: 1px dashed #ccc;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.badge, .proBadge {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+.badge { background: #f0f0f0; }
+.proBadge { background: #ffd700; color: #000; font-weight: bold; }
+
+.parcaCard {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+.parcaCard img { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; }
+
+.stepBox {
+  background: #fdf2e9;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+}
+.stepNum {
+  background: #e67e22;
+  color: white;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.closeBtn {
+  margin: 10px;
+  padding: 10px;
+  background: #ff4757;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.contentItem {
+  margin-bottom: 12px;
+}
+
+/* Addım qutusu */
+.stepBox {
+  background-color: #FDF2E9; /* Açıq bej fon */
+  padding: 10px 14px;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start; /* Mətn çox olanda addım nömrəsi yuxarıda qalsın */
+  gap: 12px;
+}
+
+/* Əgər tip 'text'dirsə, nömrə olmayacağı üçün fərqli dizayn verilə bilər */
+.plainText {
+  background-color: #f8f9fa;
+}
+
+/* Addım nömrəsi (Dairə) */
+.stepNum {
+  background-color: #D4A373; /* Şəkildəki qəhvəyi tonu */
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0; /* Dairənin sıxılmaması üçün */
+  margin-top: 2px;
+}
+
+.stepText {
+  margin: 0;
+  font-size: 14px;
+  color: #5D4037; /* Tünd qəhvəyi mətn */
+  line-height: 1.5;
+}
+
+/* Şəkil toru (Grid) */
+.imageGrid {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.stepImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #eee;
+}

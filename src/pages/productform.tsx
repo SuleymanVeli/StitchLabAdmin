@@ -10,6 +10,7 @@ import FormTextArea from '@/components/FormTextArea';
 import Button from '@/components/Button';
 import { useEffect, useState } from 'react';
 import MultiSelect from '@/components/MultiSelect';
+import PreviewModal from '@/components/PreviewModal';
 
 const sectionContentSchema = z.object({
     type: z.enum(['text', 'image', 'step']),
@@ -53,11 +54,17 @@ const CATEGORY_OPTIONS = [
     { value: 'Geyim', label: 'Geyim' }
 ];
 
+// Qısaltmalar üçün seçimlər 50 eded
 const ABBREVIATION_OPTIONS = [
     { value: 'sc', label: 'sc (Sıx iynə)' },
     { value: 'inc', label: 'inc (Artırma)' },
     { value: 'dec', label: 'dec (Azaltma)' },
-    { value: 'ch', label: 'ch (Zəncir)' }
+    { value: 'ch', label: 'ch (Zəncir)' },
+    { value: 'slst', label: 'slst (Slip Stitch)' },
+    { value: 'hdc', label: 'hdc (Half Double Crochet)' },
+    { value: 'dc', label: 'dc (Double Crochet)' },
+    
+
 ];
 
 const EXTRA_MATERIAL_OPTIONS = [
@@ -75,6 +82,8 @@ export default function ProductForm() {
     const isEditMode = !!id;
     const [loading, setLoading] = useState(isEditMode);
 
+    const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+
     const { register, control, handleSubmit, reset, formState: { errors, isSubmitting }, getValues, setValue } = useForm({
         resolver: zodResolver(schema),
         defaultValues: {
@@ -88,6 +97,9 @@ export default function ProductForm() {
         control,
         name: "sections"
     });
+
+    const formData = getValues();
+
 
     useEffect(() => {
         if (!id) {
@@ -130,6 +142,8 @@ export default function ProductForm() {
         }
     };
 
+    
+
 
     if (loading) return <p>Yüklənir...</p>;
 
@@ -138,6 +152,9 @@ export default function ProductForm() {
             <div className={styles.formHeader}>
                 <h1 className={styles.pageTitle}>{isEditMode ? "Dizaynı Redaktə Et" : "Yeni Toxuma Dizaynı"}</h1>
                 <p>StitchLab üçün yeni pattern məlumatlarını daxil edin</p>
+                <Button type="button" variant="danger" onClick={() => setIsPreviewOpen(true)}>
+                    👁️ Ön Baxış
+                </Button>
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className={styles.mainForm}>
@@ -296,10 +313,21 @@ export default function ProductForm() {
                     </Button>
                 </div>
 
+
                 <Button type="submit" disabled={isSubmitting} variant={'primary'}>
                     {isSubmitting ? "Gözləyin..." : (isEditMode ? "Yadda Saxla" : "Paylaş")}
                 </Button>
+                <div style={{padding:"10px", display:"inline-block"}}></div>
+                <Button type="button" variant="outline" onClick={() => setIsPreviewOpen(true)}>
+                    👁️ Ön Baxış
+                </Button>
             </form>
+
+            <PreviewModal 
+                isOpen={isPreviewOpen} 
+                onClose={() => setIsPreviewOpen(false)} 
+                data={formData} 
+            />
         </div>
     );
 }

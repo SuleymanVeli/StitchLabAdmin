@@ -4,10 +4,14 @@ import styles from '../styles/productlist.module.css';
 import layoutStyles from '../styles/layout.module.css'; // Header və s. üçün
 import Link from 'next/link';
 import Button from '@/components/Button';
+import PreviewModal from '@/components/PreviewModal';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+
+  const [previewOpen, setPreviewOpen] = useState(null);
 
   const fetchProducts = async () => {
     try {
@@ -67,6 +71,7 @@ export default function ProductsPage() {
               <th>Ad</th>
               <th>Kateqoriyalar</th>
               <th>Hazırlıq</th>
+              <th>Ön Baxış</th>
               <th>Əməliyyatlar</th>
             </tr>
           </thead>
@@ -111,6 +116,15 @@ export default function ProductsPage() {
                 <td style={{ fontSize: '0.85rem', color: '#666' }}>
                   {product.preparation.main.yarn} / {product.preparation.main.hook}
                 </td>
+                <td>
+                  <Button 
+                    variant='outline'
+                    style={{ padding: '6px 12px', fontSize: '13px' }}
+                    onClick={() => setPreviewOpen(product)}
+                  >
+                    👁️ Baxış
+                  </Button>
+                </td>
                 <td className={styles.actions}>
                   <Link href={`/productform?id=${product._id}`}>
                     {/* Edit düyməsi üçün ikon əlavə etmək vizualı gücləndirər */}
@@ -137,6 +151,12 @@ export default function ProductsPage() {
           </div>
         )}
       </div>
+
+      <PreviewModal 
+                isOpen={previewOpen !== null} 
+                onClose={() => setPreviewOpen(null)} 
+                data={previewOpen} 
+            />
     </div>
   );
 }
