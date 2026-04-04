@@ -11,6 +11,7 @@ import Button from '@/components/Button';
 import { useEffect, useState } from 'react';
 import MultiSelect from '@/components/MultiSelect';
 import PreviewModal from '@/components/PreviewModal';
+import Loading from '@/components/Loading';
 
 const sectionContentSchema = z.object({
     type: z.enum(['text', 'image', 'step']),
@@ -145,7 +146,7 @@ export default function ProductForm() {
     
 
 
-    if (loading) return <p>Yüklənir...</p>;
+    if (loading) return <Loading fullScreen message="Məlumatlar gətirilir..." />;
 
     return (
         <div className={styles.formWrapper}>

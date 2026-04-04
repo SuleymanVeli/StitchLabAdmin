@@ -5,6 +5,7 @@ import layoutStyles from '../styles/layout.module.css'; // Header və s. üçün
 import Link from 'next/link';
 import Button from '@/components/Button';
 import PreviewModal from '@/components/PreviewModal';
+import Loading from '@/components/Loading';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
@@ -39,8 +40,6 @@ export default function ProductsPage() {
     } 
   };
 
-  if (loading) return <div className={styles.card}>Yüklənir...</div>;
-
   const getDifficulty = (difficulty: string) => {
     switch (difficulty) {
       case 'easy':
@@ -53,6 +52,8 @@ export default function ProductsPage() {
         return difficulty;
     }
   };
+
+  if (loading) return <Loading fullScreen message="Məlumatlar gətirilir..." />;
 
   return (
     <div className={styles.pageWrapper}>

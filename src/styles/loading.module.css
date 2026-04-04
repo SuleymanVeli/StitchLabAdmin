@@ -1,0 +1,66 @@
+.loaderWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.fullScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 9999;
+}
+
+.stitchContainer {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+/* Fırlanan sap yumağı effekti */
+.ball {
+  width: 100%;
+  height: 100%;
+  border: 4px solid #D4A373;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Ortadakı nöqtə - iynənin ucu kimi */
+.ball::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 4px solid #E67E22;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite reverse;
+}
+
+.text {
+  margin-top: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #5D4037;
+  font-weight: 500;
+  letter-spacing: 1px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
