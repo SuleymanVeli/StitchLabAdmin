@@ -5,10 +5,11 @@ interface FormInputProps {
   label: string;
   placeholder?: string;
   error?: string;
-  registration: any; 
+  registration?: any; 
+  otherProps?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 }
 
-const FormTextArea: React.FC<FormInputProps> = ({ label, placeholder, error, registration }) => {
+const FormTextArea: React.FC<FormInputProps> = ({ label, placeholder, error, registration, otherProps }) => {
   return (
     <div className={styles.formGroup}>
       <label>{label}</label>
@@ -16,6 +17,7 @@ const FormTextArea: React.FC<FormInputProps> = ({ label, placeholder, error, reg
         {...registration} 
         placeholder={placeholder} 
         className={styles.input} 
+        {...otherProps}
       />
       {error && <p className={styles.error}>{error}</p>}
     </div>

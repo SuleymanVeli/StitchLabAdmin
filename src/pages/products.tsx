@@ -73,6 +73,7 @@ export default function ProductsPage() {
               <th>Kateqoriyalar</th>
               <th>Hazırlıq</th>
               <th>Ön Baxış</th>
+              <th>Dillər</th>
               <th>Əməliyyatlar</th>
             </tr>
           </thead>
@@ -125,6 +126,35 @@ export default function ProductsPage() {
                   >
                     👁️ Baxış
                   </Button>
+                </td>
+                <td>
+                  <div className={styles.tagGroup}>
+                    <Link href={`/productformlanguage?id=${product._id}&lang=en`}>
+                      <Button variant='outline' style={{ padding: '6px', fontSize: '13px' }}>
+                        En
+                      </Button>
+                    </Link>
+                     <Link href={`/productformlanguage?id=${product._id}&lang=ru`}>
+                      <Button variant='outline' style={{ padding: '6px', fontSize: '13px' }}>
+                        Ru
+                      </Button>
+                    </Link>
+                     <Link href={`/productformlanguage?id=${product._id}&lang=es`}>
+                      <Button variant='outline' style={{ padding: '6px', fontSize: '13px' }}>
+                        Es
+                      </Button>
+                    </Link>
+                     <Link href={`/productformlanguage?id=${product._id}&lang=tr`}>
+                      <Button variant='outline' style={{ padding: '6px', fontSize: '13px' }}>
+                        Tr
+                      </Button>
+                    </Link>
+                    <Link href={`/productformlanguage?id=${product._id}&lang=de`}>
+                      <Button variant='outline' style={{ padding: '6px', fontSize: '13px' }}>
+                        De
+                      </Button>
+                    </Link>
+                  </div>        
                 </td>
                 <td className={styles.actions}>
                   <Link href={`/productform?id=${product._id}`}>

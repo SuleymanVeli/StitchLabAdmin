@@ -64,8 +64,6 @@ const ABBREVIATION_OPTIONS = [
     { value: 'slst', label: 'slst (Slip Stitch)' },
     { value: 'hdc', label: 'hdc (Half Double Crochet)' },
     { value: 'dc', label: 'dc (Double Crochet)' },
-    
-
 ];
 
 const EXTRA_MATERIAL_OPTIONS = [
@@ -101,7 +99,6 @@ export default function ProductForm() {
 
     const formData = getValues();
 
-
     useEffect(() => {
         if (!id) {
             setLoading(false);
@@ -112,7 +109,6 @@ export default function ProductForm() {
             try {
                 const { data } = await api.get(`/products?id=${id}`);
 
-
                 reset(data);
                 setLoading(false);
             } catch (error) {
@@ -122,9 +118,6 @@ export default function ProductForm() {
 
         fetchProduct();
     }, [id, reset]);
-
-
-
 
     const onSubmit = async (data: any) => {
 
@@ -142,10 +135,7 @@ export default function ProductForm() {
             alert("Xəta baş verdi");
         }
     };
-
     
-
-
     if (loading) return <Loading fullScreen message="Məlumatlar gətirilir..." />;
 
     return (
