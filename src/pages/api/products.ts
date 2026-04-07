@@ -57,7 +57,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       product.markModified('sections');
       product.markModified('preparation');
       product.markModified('abbreviations');
-
+      product.createdAt = Date.now;
       // 4. Yadda saxla
       await product.save();
 
