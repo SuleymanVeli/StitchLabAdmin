@@ -30,8 +30,8 @@ const schema = z.object({
     isPro: z.boolean().default(false),
 
     images: z.object({
-        large: z.string(),
-        thumbnail: z.string(),
+        large: z.string().min(3, "Şəkil əlavə et"),
+        thumbnail: z.string().min(3, "Şəkil əlavə et"),
     }),
     preparation: z.object({
         main: z.object({
