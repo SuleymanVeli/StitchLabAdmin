@@ -63,7 +63,8 @@ const ProductSchema = new Schema({
   }],
   // Qısaltmalar: Məsələn [{ key: "sc", value: { az: "sıx iynə", en: "single crochet" } }]
   abbreviations: [{ type: String }],
-  createdAt: { type: Date, default: Date.now },
+  createdAt: { type: Date},
+  updatedAt: { type: Date},
   isDeleted: { type: Boolean, default: false }
 }, { 
   timestamps: true,

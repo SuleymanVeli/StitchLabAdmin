@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const { id, lang } = req.query;
 
-  const targetLang = (lang as string) || (req.headers['accept-language']?.split(',')[0].split('-')[0]) || 'az';
+  const targetLang = (lang as string) || 'az';
 
   try {
     if (req.method === 'GET') {
@@ -37,7 +37,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       // 1. Gələn sadə datanı MongoDB strukturuna uyğunlaşdır
       const formattedData = prepareForStorage(rawData)
-      
+
+      console.log(rawData)
+      console.log("------")
+      console.log(formattedData)
 
       const product = await Product.create(formattedData);
       return res.status(201).json(product);
@@ -52,12 +55,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       // 2. Helper vasitəsilə lazımi dili/dataları üzərinə yazırıq
       applyLocalizedUpdate(product, req.body, targetLang);
-
       // 3. MongoDB-nin dəyişikliyi anlaması üçün bəzən massivləri "markModified" etmək lazım olur
       product.markModified('sections');
       product.markModified('preparation');
       product.markModified('abbreviations');
-      product.createdAt = new Date()
       // 4. Yadda saxla
       await product.save();
 

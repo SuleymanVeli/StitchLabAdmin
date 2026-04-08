@@ -3,11 +3,7 @@
 export function prepareForStorage(data: any) {
   // String-i obyektə çevirən köməkçi
   const toAz = (val: string) => ({
-    az: val || "",
-    en: "", // Digər dillər boş qalır, sonra admin panelindən doldurula bilər
-    ru: "",
-    tr: "",
-    es: ""
+    az: val || ""   
   });
 
   return {
