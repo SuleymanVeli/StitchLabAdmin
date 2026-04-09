@@ -6,7 +6,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   const navLinks = [
-    { name: 'Məhsullar', path: '/products' }
+    { name: 'Məhsullar', path: '/products' },
+    { name: 'Notlar', path: '/notes' },
   ];
 
   return (
