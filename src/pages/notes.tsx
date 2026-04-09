@@ -33,7 +33,7 @@ export default function NoteList() {
       const parts = note.path ? note.path.split('/') : [];
       let current = tree;
 
-      parts.forEach((part) => {
+      parts.forEach((part:any) => {
         if (!current[part]) {
           current[part] = { _isFolder: true, children: {} };
         }
