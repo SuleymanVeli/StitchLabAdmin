@@ -12,12 +12,15 @@ import { useEffect, useState } from 'react';
 import MultiSelect from '@/components/MultiSelect';
 import PreviewModal from '@/components/PreviewModal';
 import Loading from '@/components/Loading';
+import { ContentEditor } from '@/components/ContentEditor';
 
 const sectionContentSchema = z.object({
     type: z.enum(['text', 'image', 'step']),
     text: z.string().optional(),
     images: z.array(z.string()).optional(),
     step: z.number().optional(),
+    stepTo: z.number().optional(),
+    _id: z.string().optional()
 });
 
 // Validation Sxemi (Modelə tam uyğun)
@@ -43,7 +46,8 @@ const schema = z.object({
     sections: z.array(z.object({
         name: z.string().min(1, "Hissə adı vacibdir"),
         sectionImage: z.string().min(1, "Hissə şəkli tələb olunur"),
-        content: z.array(sectionContentSchema)
+        content: z.array(sectionContentSchema),
+        _id: z.string().optional()
     })),
     abbreviations: z.array(z.string()).min(1, "Qısaltmaları qeyd edin"),
 });
@@ -123,7 +127,6 @@ export default function ProductForm() {
 
         console.log("Form Data:", data); // Göndəriləcək məlumatları konsola yazdırın
 
-        // return; // API çağırışını test etmək üçün burada dayandırın
         try {
             if (isEditMode) {
                 await api.put(`/products?id=${id}`, data); // Redaktə
@@ -135,7 +138,9 @@ export default function ProductForm() {
             alert("Xəta baş verdi");
         }
     };
-    
+
+    console.log(errors)
+
     if (loading) return <Loading fullScreen message="Məlumatlar gətirilir..." />;
 
     return (
@@ -283,15 +288,15 @@ export default function ProductForm() {
                                 error={errors.sections?.[sIndex]?.sectionImage?.message as string}
                             />
 
-                   
-                            <SectionContent
-                                sIndex={sIndex}
+                            <Controller
+                                name={`sections.${sIndex}.content`}
                                 control={control}
-                                register={register}
-                                errors={errors}
-                                getValues={getValues}
-                                setValue={setValue}
-
+                                render={({ field: { value, onChange } }) => (
+                                    <ContentEditor
+                                        value={value || []}
+                                        onChange={onChange}
+                                    />
+                                )}
                             />
                         </div>
                     ))}
@@ -304,20 +309,21 @@ export default function ProductForm() {
                     </Button>
                 </div>
 
-
-                <Button type="submit" disabled={isSubmitting} variant={'primary'}>
-                    {isSubmitting ? "Gözləyin..." : (isEditMode ? "Yadda Saxla" : "Paylaş")}
-                </Button>
-                <div style={{padding:"10px", display:"inline-block"}}></div>
-                <Button type="button" variant="outline" onClick={() => setIsPreviewOpen(true)}>
-                    👁️ Ön Baxış
-                </Button>
+                <div className={styles.actionButtons}>
+                    <Button type="submit" disabled={isSubmitting} variant={'primary'} className={styles.submitButton}>
+                        {isSubmitting ? "Gözləyin..." : (isEditMode ? "Yadda Saxla" : "Paylaş")}
+                    </Button>
+                    <div style={{ padding: "10px", display: "inline-block" }} ></div>
+                    <Button type="button" variant="outline" onClick={() => setIsPreviewOpen(true)} className={styles.previewButton}>
+                        👁️ Ön Baxış
+                    </Button>
+                </div>
             </form>
 
-            <PreviewModal 
-                isOpen={isPreviewOpen} 
-                onClose={() => setIsPreviewOpen(false)} 
-                data={formData} 
+            <PreviewModal
+                isOpen={isPreviewOpen}
+                onClose={() => setIsPreviewOpen(false)}
+                data={formData}
             />
         </div>
     );

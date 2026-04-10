@@ -111,3 +111,74 @@
   border-radius: 4px;
   text-decoration: none;
 }
+
+/* ... mövcud kodlar ... */
+
+/* Responsive Düzəlişlər */
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem auto;
+    padding: 0 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .addButton {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Mobildə qovluq dərinliyini azaldırıq ki, yer qalsın */
+  .folderWrapper {
+    padding-left: 0.75rem;
+  }
+
+  .folderContent {
+    margin-left: 0.25rem;
+  }
+
+  /* Kart daxili elementləri alt-alta düzürük */
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 1rem;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: flex-end; /* Düymələri sağa sıxırıq */
+    border-top: 1px solid #f8fafc;
+    padding-top: 8px;
+    gap: 1.5rem;
+  }
+
+  .viewButton {
+    padding: 6px 12px; /* Mobildə toxunma sahəsini böyüdürük */
+  }
+}
+
+/* Çox kiçik ekranlar üçün (məs: iPhone SE) */
+@media (max-width: 480px) {
+  .folderName {
+    font-size: 0.9rem;
+  }
+  
+  .title {
+    font-size: 0.85rem;
+    word-break: break-all; /* Uzun başlıqlar ekranı qırmasın */
+  }
+
+  .actions {
+    gap: 1rem;
+  }
+}

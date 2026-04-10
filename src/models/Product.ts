@@ -58,7 +58,8 @@ const ProductSchema = new Schema({
       // Addım mətni çoxdilli oldu
       text: LocalizedStringOptional,
       images: [{ type: String }], 
-      step: { type: Number } 
+      step: { type: Number },
+      stepTo: { type: Number } 
     }]
   }],
   // Qısaltmalar: Məsələn [{ key: "sc", value: { az: "sıx iynə", en: "single crochet" } }]

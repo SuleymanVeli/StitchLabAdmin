@@ -70,3 +70,71 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
+
+.closeBtn, .burgerBtn {
+  display: none; /* Desktopda gizlət */
+}
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -260px; /* Ekrardan kənara çıxart */
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    width: 260px;
+  }
+
+  .sidebarOpen {
+    left: 0; /* Menyu açılanda içəri girsin */
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .burgerBtn {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #1c2536;
+  }
+
+  .closeBtn {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  .logo h2 {
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .topHeader {
+    padding: 0 15px;
+  }
+
+  .userName {
+    display: none; /* Mobildə yer tutmasın deyə gizlətmək olar */
+  }
+
+  .pageBody {
+    padding: 0px;
+  }
+}

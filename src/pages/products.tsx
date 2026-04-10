@@ -37,7 +37,7 @@ export default function ProductsPage() {
       fetchProducts(); // Silindikdən sonra məlumatları yenidən yükləyin      
     } catch (error) {
       console.error("Məlumat silinərkən xəta:", error);
-    } 
+    }
   };
 
   const getDifficulty = (difficulty: string) => {
@@ -80,96 +80,44 @@ export default function ProductsPage() {
           <tbody>
             {products.map((product) => (
               <tr key={product._id}>
-                <td>
+                <td data-label="Şəkil">
                   <div className={styles.thumbnailWrapper}>
-                    <img
-                      src={product.images.thumbnail || '/placeholder.png'}
-                      alt={product.title}
-                      className={styles.thumbnailImage}
-                    />
+                    <img src={product.images.thumbnail || '/placeholder.png'} alt={product.title} className={styles.thumbnailImage} />
                   </div>
-                </td>                
-                {/* Cədvəlin daxilində Title-ın yanına əlavə etmək olar */}
-                <td>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ fontWeight: 600 }}>{product.title}</span>
-                    {product.isPro && (
-                      <span style={{ 
-                        backgroundColor: '#fff3cd', 
-                        color: '#856404', 
-                        fontSize: '10px', 
-                        padding: '2px 6px', 
-                        borderRadius: '4px',
-                        border: '1px solid #ffeeba'
-                      }}>
-                        PRO
-                      </span>
-                    )}
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#888' }}>Səviyyə: {getDifficulty(product.difficulty)}</div>
                 </td>
-                <td>
+                <td data-label="Ad">
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                    <span style={{ fontWeight: 600 }}>{product.title}</span>
+                    <span style={{ fontSize: '11px', color: '#888' }}>Səviyyə: {getDifficulty(product.difficulty)}</span>
+                  </div>
+                </td>
+                <td data-label="Kateqoriyalar">
                   <div className={styles.tagGroup}>
                     {product.categories?.map((cat: string, i: number) => (
                       <span key={i} className={styles.categoryTag}>{cat}</span>
                     ))}
                   </div>
                 </td>
-                <td style={{ fontSize: '0.85rem', color: '#666' }}>
+                <td data-label="Hazırlıq">
                   {product.preparation.main.yarn} / {product.preparation.main.hook}
                 </td>
-                <td>
-                  <Button 
-                    variant='outline'
-                    style={{ padding: '6px 12px', fontSize: '13px' }}
-                    onClick={() => setPreviewOpen(product)}
-                  >
-                    👁️ Baxış
-                  </Button>
+                <td data-label="Ön Baxış">
+                  <Button variant='outline' onClick={() => setPreviewOpen(product)}>👁️ Baxış</Button>
                 </td>
-                <td>
+                <td data-label="Dillər">
                   <div className={styles.tagGroup}>
-                    <Link href={`/productformlanguage?id=${product._id}&lang=en`}>
-                      <Button variant='outline' style={{ padding: '6px', fontSize: '13px' }}>
-                        En
-                      </Button>
-                    </Link>
-                     <Link href={`/productformlanguage?id=${product._id}&lang=ru`}>
-                      <Button variant='outline' style={{ padding: '6px', fontSize: '13px' }}>
-                        Ru
-                      </Button>
-                    </Link>
-                     <Link href={`/productformlanguage?id=${product._id}&lang=es`}>
-                      <Button variant='outline' style={{ padding: '6px', fontSize: '13px' }}>
-                        Es
-                      </Button>
-                    </Link>
-                     <Link href={`/productformlanguage?id=${product._id}&lang=tr`}>
-                      <Button variant='outline' style={{ padding: '6px', fontSize: '13px' }}>
-                        Tr
-                      </Button>
-                    </Link>
-                    <Link href={`/productformlanguage?id=${product._id}&lang=de`}>
-                      <Button variant='outline' style={{ padding: '6px', fontSize: '13px' }}>
-                        De
-                      </Button>
-                    </Link>
-                  </div>        
+                    {['en', 'ru', 'es', 'tr', 'de'].map(lang => (
+                      <Link key={lang} href={`/productformlanguage?id=${product._id}&lang=${lang}`}>
+                        <Button variant='outline' style={{ padding: '4px 8px', fontSize: '11px' }}>{lang.toUpperCase()}</Button>
+                      </Link>
+                    ))}
+                  </div>
                 </td>
                 <td className={styles.actions}>
-                  <Link href={`/productform?id=${product._id}`}>
-                    {/* Edit düyməsi üçün ikon əlavə etmək vizualı gücləndirər */}
-                    <Button variant='secondary' style={{ padding: '6px 12px', fontSize: '13px' }}>
-                      ✏️ Dəyiş
-                    </Button>
+                  <Link href={`/productform?id=${product._id}`} style={{ width: '100%' }}>
+                    <Button variant='secondary' style={{ width: '100%' }}>✏️ Dəyiş</Button>
                   </Link>
-                  <Button
-                    variant='danger'
-                    style={{ padding: '6px 12px', fontSize: '13px' }}
-                    onClick={() => { handleDelete(product._id) }}
-                  >
-                    🗑️ Sil
-                  </Button>
+                  <Button variant='danger' style={{ width: '100%' }} onClick={() => { handleDelete(product._id) }}>🗑️ Sil</Button>
                 </td>
               </tr>
             ))}
@@ -183,11 +131,11 @@ export default function ProductsPage() {
         )}
       </div>
 
-      <PreviewModal 
-                isOpen={previewOpen !== null} 
-                onClose={() => setPreviewOpen(null)} 
-                data={previewOpen} 
-            />
+      <PreviewModal
+        isOpen={previewOpen !== null}
+        onClose={() => setPreviewOpen(null)}
+        data={previewOpen}
+      />
     </div>
   );
 }

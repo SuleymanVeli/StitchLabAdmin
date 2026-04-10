@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.listWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  background: #f9f9f9;
+  transition: box-shadow 0.2s;
+}
+
+.row:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.dragHandle {
+  color: #ccc;
+  margin-right: 12px;
+  cursor: grab;
+  font-size: 20px;
+}
+
+.contentArea {
+  flex: 1;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* Tip rəngləri (kənar xətt olaraq) */
+.text { border-left: 4px solid #1976d2; }
+.step { border-left: 4px solid #388e3c; }
+.image { border-left: 4px solid #f57c00; }
+
+.imageGrid {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.previewThumb {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  color: #ff5252;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+.inputArea {
+  border-top: 1px dashed #ddd;
+  padding-top: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  font-size: 15px;
+}
+
+.input:focus {
+  border-color: #1976d2;
+}

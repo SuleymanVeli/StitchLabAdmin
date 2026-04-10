@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import Select from 'react-select';
 import { Controller } from 'react-hook-form';
 import styles from '../styles/products.module.css';
@@ -12,6 +12,8 @@ interface MultiSelectProps {
 }
 
 const MultiSelect: React.FC<MultiSelectProps> = ({ label, name, control, options, error }) => {
+
+  const uniqueId = useId();
   return (
     <div className={styles.formGroup}>
       <label>{label}</label>
@@ -20,7 +22,8 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ label, name, control, options
         control={control}
         render={({ field }) => (
           <Select
-            {...field}
+            instanceId={uniqueId}
+            {...field}            
             isMulti
             options={options}
             placeholder="Seçim edin..."

@@ -46,7 +46,8 @@
   margin-bottom: 0.5rem;
 }
 
-.input, .textarea {
+.input,
+.textarea {
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   padding: 0.75rem 1rem;
@@ -146,7 +147,7 @@
   margin-bottom: 10px;
 }
 
-.imageSection{
+.imageSection {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -167,25 +168,26 @@
   display: block;
 }
 
-.contentRow{
-    background: #ffffff;
-    border: 1px dashed #cbd5e1;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    padding: 1rem;
+.contentRow {
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
 
 .typeSelect {
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    transition: all 0.2s;
-    background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s;
+  background: white;
 }
 
 .thumbnailWrapper {
-  width: 80px;  /* İstədiyin standart ölçü */
+  width: 80px;
+  /* İstədiyin standart ölçü */
   height: 80px;
   overflow: hidden;
   border-radius: 8px;
@@ -199,8 +201,9 @@
   width: 100%;
   height: 100%;
   /* Şəkli kəsmədən və ya uzatmadan mərkəzə sığdırır */
-  object-fit: cover; 
+  object-fit: cover;
 }
+
 .pageHeader {
   display: flex;
   justify-content: space-between;
@@ -208,12 +211,115 @@
   margin-bottom: 2rem;
 }
 
-.errorText{
-     color: rgb(239, 68, 68);
-    margin-top: 5px;
-    font-size: 0.8rem; 
+.errorText {
+  color: rgb(239, 68, 68);
+  margin-top: 5px;
+  font-size: 0.8rem;
 }
 
-.insertAction{
+.insertAction {
   margin-bottom: 10px;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 768px) {
+
+  .actionButtons {
+    flex-direction: column;
+  }
+
+  .formWrapper {
+    padding: 1rem 0.5rem;
+  }
+
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+
+  /* Başlıq hissəsindəki düyməni və mətni tənzimləyirik */
+  .formHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .formHeader button {
+    width: 100%;
+    /* Ön baxış düyməsi mobildə tam en olsun */
+  }
+
+  .card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  /* Flex yan-yana olan elementləri alt-alta salırıq */
+  .flexRow {
+    flex-direction: column;
+    gap: 0;
+    /* Gap-i sıfırlayıb margin-lə idarə edirik */
+  }
+
+  .flexRow>div {
+    width: 100%;
+    /* Hər bir input tam eni tutsun */
+  }
+
+  /* Pro checkbox hissəsini ayrıca tənzimləyirik */
+  .formGroup[style*="display: flex"] {
+    margin-top: 10px !important;
+    padding-bottom: 15px;
+  }
+
+  /* Dinamik hissələr (Sections) */
+  .sectionHead {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .sectionTitleInput {
+    width: 100%;
+  }
+
+  .sectionBox {
+    padding: 0.8rem;
+  }
+
+  /* Alt-alta olan düymələr arasında məsafə */
+  .submitButton {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .previewButton {
+    width: 100%;
+  }
+
+  /* Thumbnail-ləri mobildə mərkəzləşdiririk */
+  .thumbnailWrapper {
+    width: 100%;
+    height: 150px;
+    /* Mobildə daha böyük göstərmək olar */
+  }
+}
+
+@media (max-width: 480px) {
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .input,
+  .textarea,
+  .typeSelect {
+    font-size: 0.9rem;
+    /* Kiçik ekranlarda mətni azca kiçildirik */
+  }
 }
