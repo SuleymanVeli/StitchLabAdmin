@@ -122,7 +122,7 @@ export const ContentEditor: React.FC<ContentEditorProps> = ({ value, onChange })
                           </span>
                         )}
                       </div>
-                      <button onClick={() => removeChip(index)} className={styles.deleteBtn}>×</button>
+                      <button type='button' onClick={() => removeChip(index)} className={styles.deleteBtn}>×</button>
                     </div>
                   )}
                 </Draggable>

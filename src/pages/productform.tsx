@@ -92,7 +92,7 @@ export default function ProductForm() {
         defaultValues: {
             difficulty: 'easy',
             isPro: false,
-            sections: [{ name: '', sectionImage: '', content: [{ step: 1, text: '', type: 'text' }] }]
+            sections: [{ name: '', sectionImage: '', content: [] }]
         }
     });
 
